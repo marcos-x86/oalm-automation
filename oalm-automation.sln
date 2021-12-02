@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oalm-web", "oalm-web\oalm-web.csproj", "{846C80B4-E298-4A03-AE4A-42B0E7EF6999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{846C80B4-E298-4A03-AE4A-42B0E7EF6999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846C80B4-E298-4A03-AE4A-42B0E7EF6999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846C80B4-E298-4A03-AE4A-42B0E7EF6999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846C80B4-E298-4A03-AE4A-42B0E7EF6999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
