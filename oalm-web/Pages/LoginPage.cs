@@ -1,6 +1,7 @@
 ﻿using System;
 using oalm_web.Utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace oalm_web.Pages
 {
@@ -13,7 +14,8 @@ namespace oalm_web.Pages
         private By _activeSessionModal = By.CssSelector("#layui-layer1");
         private By _activeSessionOkButton = By.CssSelector(".layui-layer-btn .layui-layer-btn1");
         private By _sessionSignOutModal = By.CssSelector(".layui-layer-dialog .fa-check-circle");
-
+        private By _dropdownListDB = By.Id("dropdownlistContentselDatabases");
+        private By _selectButtonDB = By.Id("btnSelectDatabase");
         public void SetUsername(String username)
         {
             WebDriverActions.SetText(_usernameInput, username);
@@ -50,6 +52,16 @@ namespace oalm_web.Pages
             SetPassword(password);
             ClickLoginButton();
             AcceptActiveSessionModal();
+        }
+
+        public void SelectDB(String dbName)
+        {
+            WebDriverActions.Click(_dropdownListDB);
+        }
+
+        public void ClickSelectDBButton() 
+        {
+            WebDriverActions.Click(_selectButtonDB);
         }
     }
 }

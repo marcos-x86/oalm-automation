@@ -29,5 +29,13 @@ namespace oalm_web.StepDefinitions
             String password = Environment.Config.Password;
             _loginPage.LoginWithCredentials(username, password);
         }
+
+        [When("the user selects '(.*)' database")]
+        public void WhenTheUserSelectsDatabase(string dbName)
+        {
+            _loginPage.SelectDB(dbName);
+            _loginPage.ClickSelectDBButton();
+        }
+
     }
 }

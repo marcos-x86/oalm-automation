@@ -15,6 +15,7 @@ namespace oalm_web.Pages.Components
         private By _processAndReportButton = By.CssSelector("#mainNav a[tab-menuname='PROCESS & REPORT']");
         private By _utilitiesButton = By.CssSelector("#mainNav a[tab-menuname='UTILITIES']");
         private By _usernameButton = By.CssSelector("#aUserName span[title='Username']");
+        private By _logoutButton = By.CssSelector("a[onclick='top._status.logoutAfterNotify();']");
 
         public String GetUsernameDisplayed()
         {
@@ -29,6 +30,16 @@ namespace oalm_web.Pages.Components
                 _reportingSetupButton, _processAndReportButton, _utilitiesButton, _usernameButton
             };
             return WebDriverActions.AreDisplayed(elements);
+        }
+
+        public void ClickUsernameButton()
+        {
+            WebDriverActions.Click(_usernameButton);
+        }
+
+        public void ClickLogoutButton()
+        {
+            WebDriverActions.Click(_logoutButton);
         }
     }
 }

@@ -76,5 +76,12 @@ namespace oalm_web.Utils
         {
             Wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
         }
+
+        public static void SelectElementDropDownList(By locator, String text) 
+        {
+            IWebElement element = Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+            SelectElement dropdownList = new SelectElement(element);
+            dropdownList.SelectByText(text);
+        }
     }
 }

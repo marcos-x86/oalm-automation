@@ -29,5 +29,14 @@ namespace oalm_web.StepDefinitions
             String expectedUsername = Environment.Config.Username;
             Assert.AreEqual(expectedUsername, _homePage.GetNavigationBar().GetUsernameDisplayed());
         }
+
+        [Then(@"the user  log out")]
+        public void ThenTheUserLogOut()
+        {
+            _homePage.GetNavigationBar().ClickUsernameButton();
+            _homePage.GetNavigationBar().ClickLogoutButton();
+
+        }
+
     }
 }
