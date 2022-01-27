@@ -30,12 +30,11 @@ namespace oalm_web.StepDefinitions
             Assert.AreEqual(expectedUsername, _homePage.GetNavigationBar().GetUsernameDisplayed());
         }
 
-        [Then(@"the user  log out")]
+        [Then(@"the user logs out")]
         public void ThenTheUserLogOut()
         {
             _homePage.GetNavigationBar().ClickUsernameButton();
             _homePage.GetNavigationBar().ClickLogoutButton();
-
         }
 
     }

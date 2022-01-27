@@ -51,7 +51,6 @@ namespace oalm_web.Pages
             ClickContinueButton();
             SetPassword(password);
             ClickLoginButton();
-            AcceptActiveSessionModal();
         }
 
         public void SelectDB(String dbName)
@@ -62,6 +61,7 @@ namespace oalm_web.Pages
         public void ClickSelectDBButton() 
         {
             WebDriverActions.Click(_selectButtonDB);
+            AcceptActiveSessionModal();
         }
     }
 }

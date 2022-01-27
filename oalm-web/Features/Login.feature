@@ -6,4 +6,4 @@
         When the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
         And verifies that the username is displayed in the Main Navigation bar
-        And the user  log out
+        And the user logs out
