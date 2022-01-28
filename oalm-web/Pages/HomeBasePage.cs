@@ -4,13 +4,13 @@ using OpenQA.Selenium;
 
 namespace oalm_web.Pages
 {
-    public class HomePage
+    public class HomeBasePage
     {
         private By _pageLoader = By.CssSelector("#pageLoader");
         private NavigationBar _navigationBar;
         private FooterBar _footerBar;
 
-        public HomePage()
+        public HomeBasePage()
         {
             _navigationBar = new NavigationBar();
             _footerBar = new FooterBar();

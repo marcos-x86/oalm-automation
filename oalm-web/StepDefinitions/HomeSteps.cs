@@ -9,33 +9,44 @@ namespace oalm_web.StepDefinitions
     [Binding]
     public sealed class HomeSteps
     {
-        private HomePage _homePage;
+        private HomeBasePage _homeBasePage;
 
-        public HomeSteps(HomePage homePage)
+        public HomeSteps(HomeBasePage homeBasePage)
         {
-            _homePage = homePage;
+            _homeBasePage = homeBasePage;
+        }
+
+        [When("the user clicks on '(.*)' menu in the navigation bar")]
+        public void ClicksMenuEntry(string menuName)
+        {
+            _homeBasePage.GetNavigationBar().ClickMenuEntryButton(menuName);
+        }
+
+        [When("the user clicks the '(.*)' menu item button")]
+        public void ClicksMenuItem(string menuItem)
+        {
+            _homeBasePage.GetNavigationBar().ClickMenuItem(menuItem);
         }
 
         [Then("verifies that the Home page is displayed")]
         public void VerifyHomePageDisplayed()
         {
-            _homePage.WaitUntilLoadIsCompleted();
-            Assert.IsTrue(_homePage.GetFooterBar().IsDisplayed());
+            _homeBasePage.WaitUntilLoadIsCompleted();
+            Assert.IsTrue(_homeBasePage.GetFooterBar().IsDisplayed());
         }
 
         [Then("verifies that the username is displayed in the Main Navigation bar")]
         public void VerifyUsernameDisplayed()
         {
             String expectedUsername = Environment.Config.Username;
-            Assert.AreEqual(expectedUsername, _homePage.GetNavigationBar().GetUsernameDisplayed());
+            Assert.AreEqual(expectedUsername, _homeBasePage.GetNavigationBar().GetUsernameDisplayed());
         }
 
         [Then(@"the user logs out")]
         public void ThenTheUserLogOut()
         {
-            _homePage.GetNavigationBar().ClickUsernameButton();
-            _homePage.GetNavigationBar().ClickLogoutButton();
+            _homeBasePage.GetNavigationBar().ClickUsernameButton();
+            _homeBasePage.GetNavigationBar().ClickLogoutButton();
         }
-
     }
 }

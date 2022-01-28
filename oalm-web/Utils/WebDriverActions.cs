@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
@@ -27,6 +28,19 @@ namespace oalm_web.Utils
         {
             IWebElement element = Wait.Until(ExpectedConditions.ElementToBeClickable(locator));
             element.Click();
+        }
+        
+        public static void DoubleClick(By locator)
+        {
+            IWebElement element = Wait.Until(ExpectedConditions.ElementExists(locator));
+            Actions actions = new Actions(Webdrivers.WebDriverManager.Instance.GetWebDriver());
+            actions.DoubleClick(element).Perform();
+        }     
+        
+        public static void PressEnter(By locator)
+        {
+            IWebElement element = Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+            element.SendKeys(Keys.Return);
         }
 
         public static String GetText(By locator)
