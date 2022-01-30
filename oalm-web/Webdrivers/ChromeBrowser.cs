@@ -3,15 +3,14 @@ using OpenQA.Selenium.Chrome;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace oalm_web.Webdrivers
+namespace oalm_web.Webdrivers;
+
+public class ChromeBrowser : IBrowser
 {
-    public class ChromeBrowser : IBrowser
+    public WebDriver GetDriver()
     {
-        public WebDriver GetDriver()
-        {
-            DriverManager manager = new DriverManager();
-            manager.SetUpDriver(new ChromeConfig());
-            return new ChromeDriver();
-        }
+        DriverManager manager = new DriverManager();
+        manager.SetUpDriver(new ChromeConfig());
+        return new ChromeDriver();
     }
 }

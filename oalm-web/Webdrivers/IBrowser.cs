@@ -1,9 +1,8 @@
 ﻿using OpenQA.Selenium;
 
-namespace oalm_web.Webdrivers
+namespace oalm_web.Webdrivers;
+
+public interface IBrowser
 {
-    public interface IBrowser
-    {
-        WebDriver GetDriver();
-    }
+    WebDriver GetDriver();
 }

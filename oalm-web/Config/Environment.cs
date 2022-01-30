@@ -2,31 +2,30 @@
 using System.IO;
 using System.Text.Json;
 
-namespace oalm_web.Config
+namespace oalm_web.Config;
+
+public class Environment
 {
-    public class Environment
+    private static Environment _instance;
+
+    private EnvironmentConfig _environmentConfig;
+
+    private Environment()
     {
-        private static Environment _instance;
+        String fileContent = File.ReadAllText("config.json");
+        _environmentConfig = JsonSerializer.Deserialize<EnvironmentConfig>(fileContent);
+    }
 
-        private EnvironmentConfig _environmentConfig;
-
-        private Environment()
+    public static EnvironmentConfig Config
+    {
+        get
         {
-            String fileContent = File.ReadAllText("config.json");
-            _environmentConfig = JsonSerializer.Deserialize<EnvironmentConfig>(fileContent);
-        }
-
-        public static EnvironmentConfig Config
-        {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new Environment();
-                }
-
-                return _instance._environmentConfig;
+                _instance = new Environment();
             }
+
+            return _instance._environmentConfig;
         }
     }
 }

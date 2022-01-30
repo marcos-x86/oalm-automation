@@ -3,50 +3,49 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Environment = oalm_web.Config.Environment;
 
-namespace oalm_web.Webdrivers
+namespace oalm_web.Webdrivers;
+
+public sealed class WebDriverManager
 {
-    public sealed class WebDriverManager
+    private static WebDriverManager _instance;
+
+    private WebDriver _webDriver;
+    private WebDriverWait _webDriverWait;
+
+    private WebDriverManager()
     {
-        private static WebDriverManager _instance;
+        _webDriver = WebDriverFactory.GetDriver(Environment.Config.Browser);
+        _webDriverWait = new WebDriverWait(_webDriver,
+            new TimeSpan(0, 0, Environment.Config.ExplicitWaitTime));
+        _webDriver.Manage().Window.Maximize();
+    }
 
-        private WebDriver _webDriver;
-        private WebDriverWait _webDriverWait;
-
-        private WebDriverManager()
+    public static WebDriverManager Instance
+    {
+        get
         {
-            _webDriver = WebDriverFactory.GetDriver(Environment.Config.Browser);
-            _webDriverWait = new WebDriverWait(_webDriver,
-                new TimeSpan(0, 0, Environment.Config.ExplicitWaitTime));
-            _webDriver.Manage().Window.Maximize();
-        }
-
-        public static WebDriverManager Instance
-        {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new WebDriverManager();
-                }
-
-                return _instance;
+                _instance = new WebDriverManager();
             }
-        }
 
-        public WebDriver GetWebDriver()
-        {
-            return _webDriver;
+            return _instance;
         }
+    }
 
-        public WebDriverWait GetWebDriverWait()
-        {
-            return _webDriverWait;
-        }
+    public WebDriver GetWebDriver()
+    {
+        return _webDriver;
+    }
 
-        public void QuitDriver()
-        {
-            _webDriver.Quit();
-            _webDriver = null;
-        }
+    public WebDriverWait GetWebDriverWait()
+    {
+        return _webDriverWait;
+    }
+
+    public void QuitDriver()
+    {
+        _webDriver.Quit();
+        _webDriver = null;
     }
 }
