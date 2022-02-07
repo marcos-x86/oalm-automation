@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework;
 using oalm_web.Pages;
 using TechTalk.SpecFlow;
 using Environment = oalm_web.Config.Environment;
@@ -35,5 +36,18 @@ public sealed class LoginSteps
     {
         _loginPage.SelectDB(dbName);
         _loginPage.ClickSelectDBButton();
+    }
+
+    [When("the user logins with the '(.*)' username")]
+    public void WhenTheUserLoginsWithTheUsername(string username)
+    {
+        _loginPage.SetUsername(username);
+        _loginPage.ClickContinueButton();
+    }
+
+    [Then("verifies that a error message modal is displayed with the following text")]
+    public void VerifyErrorMessageModal(string expectedContent)
+    {
+        Assert.AreEqual(expectedContent, _loginPage.GetErrorModalMessage());
     }
 }

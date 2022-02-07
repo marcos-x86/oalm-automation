@@ -15,6 +15,7 @@ public class LoginPage
     private By _sessionSignOutModal = By.CssSelector(".layui-layer-dialog .fa-check-circle");
     private By _dropdownListDB = By.Id("dropdownlistContentselDatabases");
     private By _selectButtonDB = By.Id("btnSelectDatabase");
+    private By _errorModalContent = By.CssSelector(".layui-layer-dialog .layui-layer-content");
 
     public void SetUsername(String username)
     {
@@ -62,5 +63,10 @@ public class LoginPage
     {
         WebDriverActions.Click(_selectButtonDB);
         AcceptActiveSessionModal();
+    }
+
+    public string GetErrorModalMessage()
+    {
+        return WebDriverActions.GetText(_errorModalContent);
     }
 }

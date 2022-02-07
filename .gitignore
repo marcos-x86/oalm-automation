@@ -373,3 +373,7 @@ cobertura.xml
 # Specflow
 *.feature.cs
 *.feature.xlsx.*
+
+# Resources
+oalm-web/Resources/Downloads/**
+!oalm-web/Resources/Downloads/.gitkeep

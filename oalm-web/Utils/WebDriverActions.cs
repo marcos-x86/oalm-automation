@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -107,5 +108,10 @@ public sealed class WebDriverActions
     public static void SwitchToDefaultFrame()
     {
         Webdrivers.WebDriverManager.Instance.GetWebDriver().SwitchTo().DefaultContent();
+    }
+
+    public static void WaitFixedTime(int millis)
+    {
+        Thread.Sleep(millis);
     }
 }

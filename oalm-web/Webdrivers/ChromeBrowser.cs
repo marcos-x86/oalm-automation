@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using oalm_web.Config;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
@@ -11,6 +12,11 @@ public class ChromeBrowser : IBrowser
     {
         DriverManager manager = new DriverManager();
         manager.SetUpDriver(new ChromeConfig());
-        return new ChromeDriver();
+        var chromeOptions = new ChromeOptions();
+        var downloadDirectory = Environment.Config.GetProjectFolder() + Environment.Config.DownloadsFolder;
+        chromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
+        chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
+        chromeOptions.AddUserProfilePreference("disable-popup-blocking", "true");
+        return new ChromeDriver(chromeOptions);
     }
 }

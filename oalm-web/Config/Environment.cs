@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -13,7 +14,16 @@ public class Environment
     private Environment()
     {
         String fileContent = File.ReadAllText("config.json");
-        _environmentConfig = JsonSerializer.Deserialize<EnvironmentConfig>(fileContent);
+        String environmentName = GetEnvironmentName();
+        List<EnvironmentConfig> environmentConfigs = JsonSerializer.Deserialize<List<EnvironmentConfig>>(fileContent);
+        foreach (EnvironmentConfig config in environmentConfigs)
+        {
+            if (config.TestEnvironment == environmentName)
+            {
+                _environmentConfig = config;
+                break;
+            }
+        }
     }
 
     public static EnvironmentConfig Config
@@ -27,5 +37,17 @@ public class Environment
 
             return _instance._environmentConfig;
         }
+    }
+
+    private string GetEnvironmentName()
+    {
+        String environmentName = System.Environment.GetEnvironmentVariable("TestEnvironment");
+        Console.WriteLine("===========Current Value from env: " + environmentName);
+        if (String.IsNullOrEmpty(environmentName))
+        {
+            return "QA";
+        }
+
+        return environmentName;
     }
 }
