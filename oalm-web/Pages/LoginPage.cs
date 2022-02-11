@@ -16,6 +16,7 @@ public class LoginPage
     private By _dropdownListDB = By.Id("dropdownlistContentselDatabases");
     private By _selectButtonDB = By.Id("btnSelectDatabase");
     private By _errorModalContent = By.CssSelector(".layui-layer-dialog .layui-layer-content");
+    private By _okButton = By.CssSelector("a[class='layui-layer-btn0 btn btn-primary']");
 
     public void SetUsername(String username)
     {
@@ -68,5 +69,10 @@ public class LoginPage
     public string GetErrorModalMessage()
     {
         return WebDriverActions.GetText(_errorModalContent);
+    }
+
+    public void ClickOKButton()
+    {
+        WebDriverActions.Click(_okButton);
     }
 }

@@ -50,4 +50,11 @@ public sealed class LoginSteps
     {
         Assert.AreEqual(expectedContent, _loginPage.GetErrorModalMessage());
     }
+
+    [When(@"the user clicks on OK")]
+    public void ThenTheUserClicksOnOK()
+    {
+        _loginPage.ClickOKButton();
+    }
+
 }
