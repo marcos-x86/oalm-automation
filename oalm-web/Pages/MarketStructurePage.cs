@@ -10,6 +10,7 @@ public class MarketStructurePage : HomeBasePage
 {
     private PVCurveTable _pvCurveTable;
     private PVCurveSettings _pvCurveSettings;
+    private PVCurveHeader _pVCurveHeader;
     private By _successMessage = By.CssSelector(".layui-layer-msg-success");
     private By _saveButton = By.CssSelector(".buttonGroupRight #btnSave1");
     private By _marketStructureFrame = By.CssSelector("[name='iframeMarketStructure']");
@@ -18,6 +19,7 @@ public class MarketStructurePage : HomeBasePage
     {
         _pvCurveTable = new PVCurveTable();
         _pvCurveSettings = new PVCurveSettings();
+        _pVCurveHeader = new PVCurveHeader();
     }
 
     public PVCurveTable GetPvCurveTable()
@@ -30,6 +32,10 @@ public class MarketStructurePage : HomeBasePage
         return _pvCurveSettings;
     }
 
+    public PVCurveHeader GetPvCurveHeader() 
+    {
+        return _pVCurveHeader;
+    }
     public void ClickSaveButton()
     {
         WebDriverActions.SwitchToFrame(_marketStructureFrame);

@@ -1,5 +1,6 @@
 ﻿Feature: Market Structure
 
+    @logout
     Scenario: Verify the all the UI options are available for Market Structure
         Given the user goes to the login page
         When the user logins with valid credentials
@@ -26,11 +27,11 @@
         1 YEAR
         10 YEAR
         """
-#        Then verifies that SAVE button is displayed in PV Curve header section
-#        When And the user clicks on More options icon button in PV Curve page
-#        Then verifies that the following items are displayed for More options menu
-#          | Options         |
-#          | Export to Excel |
-#          | Add Curve       |
-#          | Copy Curve      |
-#          | Delete Curve    |
+        Then verifies that SAVE button is displayed in PV Curve header section
+        When the user clicks on More options button in PV Curve page
+        Then verifies that the following items are displayed for More options menu
+          | Options         |
+          | Export to Excel |
+          | Add Curve       |
+          | Copy Curve      |
+          | Delete Curve    |
