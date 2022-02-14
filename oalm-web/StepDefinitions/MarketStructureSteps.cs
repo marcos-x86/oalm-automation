@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using oalm_web.Pages;
 using oalm_web.Pages.Constants;
@@ -34,6 +36,12 @@ public sealed class MarketStructureSteps
         _marketStructurePage.ClickSaveButton();
     }
 
+    [When("the user clicks on '(.*)' dropdown in the PV Curve Settings section")]
+    public void ClickDropdown(string configOption)
+    {
+        _marketStructurePage.GetPvCurveSettings().ClickOnDropdown(configOption);
+    }
+
     [Then("verifies that the '(.*)' value is displayed in the '(.*)' row of the '(.*)' column in the PV Curve table")]
     public void AssertCellValue(string expectedValue, string row, string column)
     {
@@ -46,5 +54,18 @@ public sealed class MarketStructureSteps
     {
         Assert.True(_marketStructurePage.IsSuccessMessageDisplayed());
         _marketStructurePage.WaitUntilSuccessMessageIsNotDisplayed();
+    }
+
+    [Then("verifies that the following options are displayed for '(.*)' dropdown in the PV Curve Settings section")]
+    public void AssertDropdownOptions(string dropdown, Table table)
+    {
+        List<string> options = table.Rows.Select(item => item["Options"]).ToList();
+        options.ForEach(option => Assert.True(_marketStructurePage.GetPvCurveSettings().IsValuePresentInDropdown(dropdown, option)));
+    }
+
+    [Then("verifies that Maturity Point PV Curve Setting should display the following values")]
+    public void AssertMaturityPointText(string expectedContent)
+    {
+        Assert.AreEqual(expectedContent, _marketStructurePage.GetPvCurveSettings().GetMaturityPointData());
     }
 }

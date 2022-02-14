@@ -114,4 +114,10 @@ public sealed class WebDriverActions
     {
         Thread.Sleep(millis);
     }
+
+    public static string GetAttribute(By locator, string attribute)
+    {
+        IWebElement element = Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        return element.GetAttribute(attribute);
+    }
 }
