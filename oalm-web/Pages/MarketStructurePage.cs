@@ -36,6 +36,7 @@ public class MarketStructurePage : HomeBasePage
     {
         return _pVCurveHeader;
     }
+    
     public void ClickSaveButton()
     {
         WebDriverActions.SwitchToFrame(_marketStructureFrame);

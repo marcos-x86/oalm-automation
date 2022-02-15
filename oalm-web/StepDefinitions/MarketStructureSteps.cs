@@ -42,6 +42,12 @@ public sealed class MarketStructureSteps
         _marketStructurePage.GetPvCurveSettings().ClickOnDropdown(configOption);
     }
 
+    [When("the user clicks on More options button in PV Curve page")]
+    public void ClickMoreOptions()
+    {
+        _marketStructurePage.GetPvCurveHeader().ClickOnMoreButton();
+    }
+
     [Then("verifies that the '(.*)' value is displayed in the '(.*)' row of the '(.*)' column in the PV Curve table")]
     public void AssertCellValue(string expectedValue, string row, string column)
     {
@@ -60,35 +66,27 @@ public sealed class MarketStructureSteps
     public void AssertDropdownOptions(string dropdown, Table table)
     {
         List<string> options = table.Rows.Select(item => item["Options"]).ToList();
-        options.ForEach(option => Assert.True(_marketStructurePage.GetPvCurveSettings().IsValuePresentInDropdown(dropdown, option)));
+        options.ForEach(option =>
+            Assert.True(_marketStructurePage.GetPvCurveSettings().IsValuePresentInDropdown(dropdown, option)));
     }
 
-    [Then("verifies that Maturity Point PV Curve Setting should display the following values")]
-    public void AssertMaturityPointText(string expectedContent)
+    [Then("verifies that Maturity Point PV Curve Setting is displayed")]
+    public void AssertMaturityPoint()
     {
-        Assert.IsTrue(true);
-        //Assert.AreEqual(expectedContent, _marketStructurePage.GetPvCurveSettings().GetMaturityPointData());
+        Assert.True(_marketStructurePage.GetPvCurveSettings().IsMaturityPointDisplayed());
     }
 
-    [Then(@"verifies that SAVE button is displayed in PV Curve header section")]
-    public void ThenVerifiesThatSAVEButtonIsDisplayedInPVCurveHeaderSection()
+    [Then("verifies that SAVE button is displayed in PV Curve header section")]
+    public void AssertSaveButton()
     {
-        Assert.IsTrue(true);
-        //Assert.IsTrue(_marketStructurePage.GetPvCurveHeader().SaveButtonIsDisplayed());
+        Assert.IsTrue(_marketStructurePage.GetPvCurveHeader().IsSaveButtonDisplayed());
     }
 
-    [When(@"the user clicks on More options button in PV Curve page")]
-    public void WhenTheUserClicksOnMoreOptionsButtonInPVCurvePage()
+    [Then("verifies that the following items are displayed for More options menu")]
+    public void AssertMoreOptions(Table table)
     {
-        Assert.IsTrue(true);
-        // _marketStructurePage.GetPvCurveHeader().ClickOnMoreButton();
+        List<string> options = table.Rows.Select(item => item["Options"]).ToList();
+        options.ForEach(option =>
+            Assert.True(_marketStructurePage.GetPvCurveHeader().IsValuePresentInMoreOptions(option)));
     }
-
-    [Then(@"verifies that the following items are displayed for More options menu")]
-    public void ThenVerifiesThatTheFollowingItemsAreDisplayedForMoreOptionsMenu(Table table)
-    {
-        Assert.IsTrue(true);
-    }
-
-
 }

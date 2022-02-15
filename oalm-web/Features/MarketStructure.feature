@@ -20,14 +20,8 @@
           | False   |
           | True    |
         When the user clicks on 'Allow Negative' dropdown in the PV Curve Settings section
-        Then verifies that Maturity Point PV Curve Setting should display the following values
-        """
-        1 MONTH
-        90 DAY
-        1 YEAR
-        10 YEAR
-        """
-        Then verifies that SAVE button is displayed in PV Curve header section
+        Then verifies that Maturity Point PV Curve Setting is displayed
+        And verifies that SAVE button is displayed in PV Curve header section
         When the user clicks on More options button in PV Curve page
         Then verifies that the following items are displayed for More options menu
           | Options         |

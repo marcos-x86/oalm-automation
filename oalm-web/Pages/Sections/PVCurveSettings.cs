@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using oalm_web.Utils;
 using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 
 namespace oalm_web.Pages.Sections;
 
@@ -14,7 +15,6 @@ public class PVCurveSettings
     private const string _allowNegativeDropdownId = "listBoxContentinnerListBoxddlAllowNegative";
     private const string _protectionDropdownArrowId = "dropdownlistArrowddlProtection";
     private const string _allowNegativeDropdownArrowId = "dropdownlistArrowddlAllowNegative";
-    private const string _maturityPointDataAttribute = "data-label";
     private By _maturityPointText = By.CssSelector("#txtMaturityPoint");
     private By _marketStructureFrame = By.CssSelector("[name='iframeMarketStructure']");
 
@@ -27,15 +27,12 @@ public class PVCurveSettings
         WebDriverActions.SwitchToDefaultFrame();
     }
 
-    public string GetMaturityPointData()
+    public Boolean IsMaturityPointDisplayed()
     {
         WebDriverActions.SwitchToFrame(_marketStructureFrame);
-        WebDriverActions.WaitFixedTime(500);
-        WebDriverActions.Click(_maturityPointText);
-        WebDriverActions.WaitFixedTime(3000);
-        string value = WebDriverActions.GetAttribute(_maturityPointText, _maturityPointDataAttribute);
+        Boolean result = WebDriverActions.IsDisplayed(_maturityPointText);
         WebDriverActions.SwitchToDefaultFrame();
-        return value;
+        return result;
     }
 
     public Boolean IsValuePresentInDropdown(string dropdown, string value)
