@@ -15,7 +15,10 @@ public class PVCurveSettings
     private const string _allowNegativeDropdownId = "listBoxContentinnerListBoxddlAllowNegative";
     private const string _protectionDropdownArrowId = "dropdownlistArrowddlProtection";
     private const string _allowNegativeDropdownArrowId = "dropdownlistArrowddlAllowNegative";
+    private const string _dataValueAttribute = "data-value";
+    private const int _valuesLoadingDelay = 1500;
     private By _maturityPointText = By.CssSelector("#txtMaturityPoint");
+    private By _idSettingText = By.CssSelector("#txtID");
     private By _marketStructureFrame = By.CssSelector("[name='iframeMarketStructure']");
 
     public void ClickOnDropdown(string option)
@@ -31,6 +34,15 @@ public class PVCurveSettings
     {
         WebDriverActions.SwitchToFrame(_marketStructureFrame);
         Boolean result = WebDriverActions.IsDisplayed(_maturityPointText);
+        WebDriverActions.SwitchToDefaultFrame();
+        return result;
+    }
+
+    public string GetIdSettingText()
+    {
+        WebDriverActions.SwitchToFrame(_marketStructureFrame);
+        WebDriverActions.WaitFixedTime(_valuesLoadingDelay);
+        string result = WebDriverActions.GetAttribute(_idSettingText, _dataValueAttribute);
         WebDriverActions.SwitchToDefaultFrame();
         return result;
     }

@@ -89,4 +89,10 @@ public sealed class MarketStructureSteps
         options.ForEach(option =>
             Assert.True(_marketStructurePage.GetPvCurveHeader().IsValuePresentInMoreOptions(option)));
     }
+
+    [Then(@"verifies that ID PV Curve Setting has the '(.*)' value")]
+    public void AssertIdSettingValue(string expectedValue)
+    {
+        Assert.AreEqual(expectedValue, _marketStructurePage.GetPvCurveSettings().GetIdSettingText());
+    }
 }

@@ -8,7 +8,8 @@
         Then verifies that the Home page is displayed
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
-        And the user clicks on 'Protection' dropdown in the PV Curve Settings section
+        Then verifies that ID PV Curve Setting has the 'Equity Curve' value 
+        When the user clicks on 'Protection' dropdown in the PV Curve Settings section
         Then verifies that the following options are displayed for 'Protection' dropdown in the PV Curve Settings section
           | Options |
           | False   |
