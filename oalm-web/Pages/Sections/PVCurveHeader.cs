@@ -9,6 +9,7 @@ namespace oalm_web.Pages.Sections
         private const string MoreOptionBaseLocator = "//li[contains(@class,'jqx-item') and text()='{0}']";
         private By _saveButton = By.CssSelector("input[id='btnSave1']");
         private By _moreButton = By.CssSelector("input[id='btnMore']");
+        private By _pvCurveValue = By.CssSelector("#dropDownButtonContentddbddlTableList div");
         private By _marketStructureFrame = By.CssSelector("[name='iframeMarketStructure']");
 
         public void ClickOnMoreButton()
@@ -31,6 +32,14 @@ namespace oalm_web.Pages.Sections
             By locator = By.XPath(String.Format(MoreOptionBaseLocator, option));
             WebDriverActions.SwitchToFrame(_marketStructureFrame);
             Boolean result = WebDriverActions.IsDisplayed(locator);
+            WebDriverActions.SwitchToDefaultFrame();
+            return result;
+        }
+
+        public string GetPvCurveValue()
+        {
+            WebDriverActions.SwitchToFrame(_marketStructureFrame);
+            string result = WebDriverActions.GetText(_pvCurveValue);
             WebDriverActions.SwitchToDefaultFrame();
             return result;
         }

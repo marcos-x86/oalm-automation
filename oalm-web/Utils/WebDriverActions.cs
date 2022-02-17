@@ -120,4 +120,9 @@ public sealed class WebDriverActions
         IWebElement element = Wait.Until(ExpectedConditions.ElementIsVisible(locator));
         return element.GetAttribute(attribute);
     }
+
+    public static void RefreshPage()
+    {
+        Webdrivers.WebDriverManager.Instance.GetWebDriver().Navigate().Refresh();
+    }
 }

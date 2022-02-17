@@ -1,14 +1,16 @@
 ﻿Feature: Market Structure
 
-    @logout
-    Scenario: Verify the all the UI options are available for Market Structure
+    Background:
         Given the user goes to the login page
         When the user logins with valid credentials
         And the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
+
+    @logout
+    Scenario: Verify the all the UI options are available for Market Structure
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
-        Then verifies that ID PV Curve Setting has the 'Equity Curve' value 
+        Then verifies that ID PV Curve Setting has the 'Equity Curve' value
         When the user clicks on 'Protection' dropdown in the PV Curve Settings section
         Then verifies that the following options are displayed for 'Protection' dropdown in the PV Curve Settings section
           | Options |
@@ -30,3 +32,15 @@
           | Add Curve       |
           | Copy Curve      |
           | Delete Curve    |
+
+    @logout @deletePVCurveCreated
+    Scenario: Verify that's possible to 'Add Cruve' on Market Structure
+        When the user clicks on 'MARKET' menu in the navigation bar
+        And the user clicks the 'Market Structure' menu item button
+        And the user clicks on More options button in PV Curve page
+        And the user clicks on 'Add Curve' option in PV Curve page
+        And the user enters 'New Test Curve' in the ID field of the Add PV Curve modal
+        And the user clicks OK button in Add PV Curve modal
+        Then verifies that the PV Curve Save success toast message is displayed
+        And verifies that the PV Curve selected is 'New Test Curve'
+        And verifies that ID PV Curve Setting has the 'New Test Curve' value

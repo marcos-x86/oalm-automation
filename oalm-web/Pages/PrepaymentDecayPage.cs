@@ -30,7 +30,7 @@ public class PrepaymentDecayPage : HomeBasePage
         WebDriverActions.SwitchToDefaultFrame();
     }
 
-    public void ClickOnMoreMenuItem(string item)
+    public void ClickOnMoreOptionsMenuItem(string item)
     {
         string xpathLocator = String.Format(MenuItemBaseLocator, item);
         By itemLocator = By.XPath(xpathLocator);

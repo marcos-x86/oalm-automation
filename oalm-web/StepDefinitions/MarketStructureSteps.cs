@@ -48,6 +48,25 @@ public sealed class MarketStructureSteps
         _marketStructurePage.GetPvCurveHeader().ClickOnMoreButton();
     }
 
+    [When("the user clicks on '(.*)' option in PV Curve page")]
+    public void ClicksOnOptionInPvCurvePage(string option)
+    {
+        _marketStructurePage.ClickOnMoreOptionsMenuItem(option);
+    }
+    
+    [When("the user enters '(.*)' in the ID field of the Add PV Curve modal")]
+    public void EnterIDInPvCurveModal(string id)
+    {
+        _marketStructurePage.GetAddPvCurveModal().SetIdTextInput(id);
+        _context.SetPVCurveId(id);
+    }
+    
+    [When("the user clicks OK button in Add PV Curve modal")]
+    public void ClickOnInPvCurveModal()
+    {
+        _marketStructurePage.GetAddPvCurveModal().ClickOnOkButton();
+    }
+    
     [Then("verifies that the '(.*)' value is displayed in the '(.*)' row of the '(.*)' column in the PV Curve table")]
     public void AssertCellValue(string expectedValue, string row, string column)
     {
@@ -90,9 +109,15 @@ public sealed class MarketStructureSteps
             Assert.True(_marketStructurePage.GetPvCurveHeader().IsValuePresentInMoreOptions(option)));
     }
 
-    [Then(@"verifies that ID PV Curve Setting has the '(.*)' value")]
+    [Then("verifies that ID PV Curve Setting has the '(.*)' value")]
     public void AssertIdSettingValue(string expectedValue)
     {
         Assert.AreEqual(expectedValue, _marketStructurePage.GetPvCurveSettings().GetIdSettingText());
+    }
+
+    [Then("verifies that the PV Curve selected is '(.*)'")]
+    public void AssertPvCurveSelected(string expectedValue)
+    {
+        Assert.AreEqual(expectedValue, _marketStructurePage.GetPvCurveHeader().GetPvCurveValue());
     }
 }

@@ -25,7 +25,7 @@ public class PrepaymentDecaySteps
     [When("the user clicks on '(.*)' option in Prepayment Decay page")]
     public void ClickMoreOptionsMenuItem(string option)
     {
-        _prepaymentDecayPage.ClickOnMoreMenuItem(option);
+        _prepaymentDecayPage.ClickOnMoreOptionsMenuItem(option);
     }
     
     [When("the user clicks on OK button in Export Selector menu")]
