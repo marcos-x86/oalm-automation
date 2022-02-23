@@ -44,3 +44,13 @@
         Then verifies that the PV Curve Save success toast message is displayed
         And verifies that the PV Curve selected is 'New Test Curve'
         And verifies that ID PV Curve Setting has the 'New Test Curve' value
+
+    @logout @deletePVCurveCreated
+    Scenario: Verify that’s possible to Copy Curve on Market Structure
+        When the user clicks on 'MARKET' menu in the navigation bar
+        And the user clicks the 'Market Structure' menu item button
+        And the user clicks on More options button in PV Curve page
+        And the user clicks on 'Copy Curve' option in PV Curve page to create a copy of the current PV Curve
+        Then verifies that the PV Curve Save success toast message is displayed
+        And verifies that the PV Curve selected is 'Equity Curve - Copy'
+        And verifies that ID PV Curve Setting has the 'Equity Curve - Copy' value

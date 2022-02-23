@@ -12,6 +12,8 @@ namespace oalm_web.StepDefinitions;
 [Binding]
 public sealed class MarketStructureSteps
 {
+    private const string CopyMenuEntry = "Copy Curve";
+    private const string CopyCurveSuffix = " - Copy";
     private MarketStructurePage _marketStructurePage;
     private Context _context;
 
@@ -53,20 +55,28 @@ public sealed class MarketStructureSteps
     {
         _marketStructurePage.ClickOnMoreOptionsMenuItem(option);
     }
-    
+
+    [When("the user clicks on 'Copy Curve' option in PV Curve page to create a copy of the current PV Curve")]
+    public void ClicksOnCopyPvCurve()
+    {
+        _context.SetPVCurveId(String.Concat(_marketStructurePage.GetPvCurveSettings().GetIdSettingText(),
+            CopyCurveSuffix));
+        _marketStructurePage.ClickOnMoreOptionsMenuItem(CopyMenuEntry);
+    }
+
     [When("the user enters '(.*)' in the ID field of the Add PV Curve modal")]
     public void EnterIDInPvCurveModal(string id)
     {
         _marketStructurePage.GetAddPvCurveModal().SetIdTextInput(id);
         _context.SetPVCurveId(id);
     }
-    
+
     [When("the user clicks OK button in Add PV Curve modal")]
     public void ClickOnInPvCurveModal()
     {
         _marketStructurePage.GetAddPvCurveModal().ClickOnOkButton();
     }
-    
+
     [Then("verifies that the '(.*)' value is displayed in the '(.*)' row of the '(.*)' column in the PV Curve table")]
     public void AssertCellValue(string expectedValue, string row, string column)
     {
