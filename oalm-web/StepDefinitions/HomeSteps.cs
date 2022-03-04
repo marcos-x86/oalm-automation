@@ -42,10 +42,16 @@ public sealed class HomeSteps
         Assert.AreEqual(expectedUsername, _homeBasePage.GetNavigationBar().GetUsernameDisplayed());
     }
 
-    [Then(@"the user logs out")]
+    [Then("the user logs out")]
     public void ThenTheUserLogOut()
     {
         _homeBasePage.GetNavigationBar().ClickUsernameButton();
         _homeBasePage.GetNavigationBar().ClickLogoutButton();
+    }
+    
+    [Then("verifies that the '(.*)' tab is present")]
+    public void AssertTabIsPresent(string tabName)
+    {
+        Assert.True(_homeBasePage.IsTabPresent(tabName));
     }
 }

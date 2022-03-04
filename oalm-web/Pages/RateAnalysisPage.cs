@@ -9,7 +9,7 @@ public class RateAnalysisPage : HomeBasePage
     private const string TabsBaseLocator = "//div[contains(@class,'jqx-tabs-titleContentWrapper') and text()='{0}']";
     private By _rateAnalysisFrame = By.CssSelector("[name='iframeRateAnalysis']");
 
-    public Boolean IsTabPresent(string name)
+    public Boolean IsTabPresentInPage(string name)
     {
         string xpathLocator = String.Format(TabsBaseLocator, name);
         By tabLocator = By.XPath(xpathLocator);

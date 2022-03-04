@@ -17,6 +17,6 @@ public class RateAnalysisSteps
     [Then("verifies that the '(.*)' tab is present in Rate Analysis page")]
     public void AssertTabName(string tabName)
     {
-        Assert.True(_rateAnalysisPage.IsTabPresent(tabName));
+        Assert.True(_rateAnalysisPage.IsTabPresentInPage(tabName));
     }
 }
