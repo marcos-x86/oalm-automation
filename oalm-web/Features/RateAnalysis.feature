@@ -1,12 +1,10 @@
 ﻿Feature: Rate Analysis
 
     Background:
-        Given the user goes to the login page
-        When the user logins with valid credentials
+        Given the user logins with valid credentials
         And the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
-    @logout
     Scenario: Verify the all the UI options are available for Yield Curve Analysis
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Rate Analysis' menu item button

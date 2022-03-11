@@ -1,9 +1,8 @@
 ﻿Feature: Table data edit
 
-    @restorePVTableData @logout
+    @restorePVTableData
     Scenario: Verify that's possible to update a cell over a table
-        Given the user goes to the login page
-        When the user logins with valid credentials
+        Given the user logins with valid credentials
         And the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
         When the user clicks on 'MARKET' menu in the navigation bar

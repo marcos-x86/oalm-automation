@@ -125,4 +125,14 @@ public sealed class WebDriverActions
     {
         Webdrivers.WebDriverManager.Instance.GetWebDriver().Navigate().Refresh();
     }
+
+    public static string GetPageTitle()
+    {
+        return Webdrivers.WebDriverManager.Instance.GetWebDriver().Title;
+    }
+    
+    public static string GetPageUrl()
+    {
+        return Webdrivers.WebDriverManager.Instance.GetWebDriver().Url;
+    }
 }

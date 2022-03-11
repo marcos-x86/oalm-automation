@@ -1,9 +1,7 @@
 ﻿Feature: Export table data
 
-    @logout
     Scenario: Verify that’s possible to export an excel file from a data table
-        Given the user goes to the login page
-        When the user logins with valid credentials
+        Given the user logins with valid credentials
         And the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
         When the user clicks on 'ASSUMPTIONS' menu in the navigation bar

@@ -1,12 +1,10 @@
 ﻿Feature: Market Structure
 
     Background:
-        Given the user goes to the login page
-        When the user logins with valid credentials
+        Given the user logins with valid credentials
         And the user selects 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
-    @logout
     Scenario: Verify the all the UI options are available for Market Structure
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
@@ -33,7 +31,7 @@
           | Copy Curve      |
           | Delete Curve    |
 
-    @logout @deletePVCurveCreated
+    @deletePVCurveCreated
     Scenario: Verify that's possible to 'Add Cruve' on Market Structure
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
@@ -45,7 +43,7 @@
         And verifies that the PV Curve selected is 'New Test Curve'
         And verifies that ID PV Curve Setting has the 'New Test Curve' value
 
-    @logout @deletePVCurveCreated
+    @deletePVCurveCreated
     Scenario: Verify that’s possible to Copy Curve on Market Structure
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
