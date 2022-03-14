@@ -1,8 +1,7 @@
 ﻿Feature: House Price Index
 
     Background:
-        Given the user logins with valid credentials
-        And the user selects 'bankofakron_47' database
+        Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
     Scenario: Verify the UI components are displayed on ‘House Price Index’ tab

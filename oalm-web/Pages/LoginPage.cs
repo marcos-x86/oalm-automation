@@ -62,12 +62,10 @@ public class LoginPage
         }
     }
 
-    public void LoginWithCredentials(String username, String password)
+    public void LoginWithCredentials(string username, string password, string dbName)
     {
-        
-        if (WebDriverActions.GetPageUrl().Contains(HomePartialUrl))
+        if (LoginUtils.LoginWithUser(username, password, dbName))
         {
-            LoginUtils.CheckLoggedUser(this, username, password);
             return;
         }
 
@@ -76,6 +74,8 @@ public class LoginPage
         ClickContinueButton();
         SetPassword(password);
         ClickLoginButton();
+        SelectDB(dbName);
+        ClickSelectDBButton();
     }
 
     public void SelectDB(String dbName)

@@ -17,8 +17,9 @@ public sealed class CommonHooks
     }
 
     [AfterTestRun]
-    public static void AfterWebFeature()
+    public static void AfterFeatures()
     {
+        LoginUtils.LogoutUser();
         Webdrivers.WebDriverManager.Instance.QuitDriver();
     }
 
@@ -29,7 +30,7 @@ public sealed class CommonHooks
         _homeBasePage.GetNavigationBar().ClickUsernameButton();
         _homeBasePage.GetNavigationBar().ClickLogoutButton();
     }
-    
+
     [AfterScenario]
     public void DeleteDownloads()
     {

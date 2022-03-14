@@ -1,8 +1,7 @@
 ﻿Feature: Export table data
 
     Scenario: Verify that’s possible to export an excel file from a data table
-        Given the user logins with valid credentials
-        And the user selects 'bankofakron_47' database
+        Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed
         When the user clicks on 'ASSUMPTIONS' menu in the navigation bar
         And the user clicks the 'Prepayment/Decay Tables' menu item button

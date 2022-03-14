@@ -23,13 +23,13 @@ public sealed class LoginSteps
         Webdrivers.WebDriverManager.Instance.GetWebDriver().Navigate().GoToUrl(_baseUrl);
     }
 
-    [Given("the user logins with valid credentials")]
-    [When("the user logins with valid credentials")]
-    public void LoginWithValidCredentials()
+    [Given("the user logins with valid credentials using the '(.*)' database")]
+    [When("the user logins with valid credentials using the '(.*)' database")]
+    public void LoginWithValidCredentials(string dbName)
     {
         String username = Environment.Config.Username;
         String password = Environment.Config.Password;
-        _loginPage.LoginWithCredentials(username, password);
+        _loginPage.LoginWithCredentials(username, password, dbName);
     }
 
     [Given("the user selects '(.*)' database")]

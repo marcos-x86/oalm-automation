@@ -1,8 +1,7 @@
 ﻿Feature: Rate Analysis
 
     Background:
-        Given the user logins with valid credentials
-        And the user selects 'bankofakron_47' database
+        Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
     Scenario: Verify the all the UI options are available for Yield Curve Analysis
