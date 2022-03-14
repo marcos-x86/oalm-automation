@@ -11,6 +11,7 @@ public class PrepaymentDecayPage : HomeBasePage
     private ExportSelectorMenu _exportSelectorMenu;
     private By _dotsIconButton = By.CssSelector("#btnMore");
     private By _prepaymentDecayFrame = By.CssSelector("[name='iframePrepaymentDecayTables']");
+    private By _closeTabIcon = By.CssSelector("a[data-id='PrepaymentDecayTables'] i.fa-remove");
 
     public PrepaymentDecayPage()
     {

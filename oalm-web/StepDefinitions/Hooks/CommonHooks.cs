@@ -23,17 +23,17 @@ public sealed class CommonHooks
         Webdrivers.WebDriverManager.Instance.QuitDriver();
     }
 
+    [AfterScenario]
+    public void DeleteDownloads()
+    {
+        FileUtils.DeleteFilesInFolder(_downloadFolder);
+    }
+    
     [AfterScenario(Order = 100000)]
     [Scope(Tag = "logout")]
     public void Logout()
     {
         _homeBasePage.GetNavigationBar().ClickUsernameButton();
         _homeBasePage.GetNavigationBar().ClickLogoutButton();
-    }
-
-    [AfterScenario]
-    public void DeleteDownloads()
-    {
-        FileUtils.DeleteFilesInFolder(_downloadFolder);
     }
 }

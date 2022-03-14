@@ -4,6 +4,7 @@
         Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
+    @closeRateAnalysisTab
     Scenario: Verify the all the UI options are available for Yield Curve Analysis
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Rate Analysis' menu item button

@@ -1,6 +1,6 @@
 ﻿Feature: Table data edit
 
-    @restorePVTableData
+    @restorePVTableData @closeMarketStructureTab
     Scenario: Verify that's possible to update a cell over a table
         Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed

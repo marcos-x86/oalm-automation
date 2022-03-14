@@ -50,4 +50,11 @@ public class MarketStructureHooks
             }
         }
     }
+    
+    [AfterScenario(Order = 90000)]
+    [Scope(Tag = "closeMarketStructureTab")]
+    public void CloseTab()
+    {
+        _page.CloseActiveTab("Market Structure");
+    }
 }

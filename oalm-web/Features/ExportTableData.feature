@@ -1,5 +1,6 @@
 ﻿Feature: Export table data
 
+    @closePrepaymentTab
     Scenario: Verify that’s possible to export an excel file from a data table
         Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed

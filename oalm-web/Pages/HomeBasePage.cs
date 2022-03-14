@@ -8,6 +8,10 @@ namespace oalm_web.Pages;
 public class HomeBasePage
 {
     private const string TabBaseLocator = "//div[@class='content-tabs']//descendant::*[contains(text(),'{0}')]";
+
+    private const string CloseTabBaseLocator =
+        "//div[@class='content-tabs']//descendant::*[contains(text(),'{0}')]//descendant::i";
+
     private By _pageLoader = By.CssSelector("#pageLoader");
     private NavigationBar _navigationBar;
     private FooterBar _footerBar;
@@ -37,5 +41,11 @@ public class HomeBasePage
     public void WaitUntilLoadIsCompleted()
     {
         WebDriverActions.WaitUntilNotDisplayed(_pageLoader);
+    }
+
+    public void CloseActiveTab(string tabDataId)
+    {
+        string locator = String.Format(CloseTabBaseLocator, tabDataId);
+        WebDriverActions.Click(By.XPath(locator));
     }
 }
