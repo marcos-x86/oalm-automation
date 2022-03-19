@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                bat "cd"
                 bat "dotnet clean build"
             }
         }
