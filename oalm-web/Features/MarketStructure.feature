@@ -4,7 +4,7 @@
         Given the user logins with valid credentials using the 'bankofakron_47' database
         Then verifies that the Home page is displayed
 
-    @closeMarketStructureTab
+    @closeMarketStructureTab @runThis
     Scenario: Verify the all the UI options are available for Market Structure
         When the user clicks on 'MARKET' menu in the navigation bar
         And the user clicks the 'Market Structure' menu item button
