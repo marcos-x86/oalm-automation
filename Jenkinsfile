@@ -12,8 +12,14 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat "cd"
-                bat "dotnet clean build"
+                bat "dotnet restore"
+                bat "dotnet clean"
+                bat "dotnet build"
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                bat "run-tests.cmd ${environmentName} ${tags}"
             }
         }
     }
