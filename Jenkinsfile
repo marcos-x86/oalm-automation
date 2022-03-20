@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                bat "run-tests.cmd ${environmentName} ${tags}"
+                bat "run-tests.cmd ${EnvironmentName} ${Tags}"
             }
         }
     }
