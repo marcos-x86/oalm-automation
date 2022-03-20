@@ -22,17 +22,15 @@ pipeline {
                 bat "run-tests.cmd ${EnvironmentName} ${Tags}"
             }
         }
-        stage('Generate Report') {
-            steps {
-                script {
-                        allure([
-                                includeProperties: false,
-                                properties: [],
-                                reportBuildPolicy: "ALWAYS",
-                                results: [[path: "oalm-web/bin/Debug/net6.0/allure-results"]]
-                        ])
-                }
-            }
+    }
+    post {
+        always {
+            allure([
+                includeProperties: false,
+                properties: [],
+                reportBuildPolicy: "ALWAYS",
+                results: [[path: "oalm-web/bin/Debug/net6.0/allure-results"]]
+            ])
         }
     }
 }
